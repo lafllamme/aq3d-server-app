@@ -345,29 +345,46 @@ const props = defineProps<PlayerProps>()
             </div>
             <div v-else>
               <svg
-                class="w-5 h-5 text-red-500"
                 aria-hidden="true"
+                class="w-5 h-5 text-orange-500"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   fill-rule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
                   clip-rule="evenodd"
                 ></path>
               </svg>
             </div>
-          </td>
-          <td class="py-4 px-6">
-            {{ server.UserCount ? server.UserCount : 0 }}
           </td>
 
           <td class="py-4 px-6">
             {{ server.Connections ? server.Connections : 0 }}
           </td>
           <td class="py-4 px-6">
-            {{ calculateTime(server.LastUpdated) }}
+            {{ server.UserCount ? server.UserCount : 0 }}
+          </td>
+          <td class="py-4 px-6">
+            <span
+              class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-gray-700 dark:text-gray-300"
+            >
+              <svg
+                aria-hidden="true"
+                class="mr-1 w-3 h-3"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+              {{ calculateTime(server.LastUpdated) }}
+            </span>
           </td>
           <td class="py-4 px-6">
             {{ server.Region }}

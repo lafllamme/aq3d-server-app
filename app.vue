@@ -3,7 +3,7 @@ type serverType = {
   [key: string]: any // 👈️ variable keys
 }
 const servers: serverType = ref<serverType>([])
-const { data }: { data: any } = await useFetch('/api/serverData')
+const { data }: { data: serverType } = await useFetch('/api/serverData')
 
 const getCurrentDate = () => {
   const addZ = (n: string) => {
@@ -28,6 +28,9 @@ const getCurrentDate = () => {
 
 let lastUpdate = ref<string>(getCurrentDate())
 let onlineStatus = ref<boolean>(true)
+let totalOnline = ref<number>(0)
+let workload = ref<number>(0)
+let style = ref<string>('')
 
 //assign apiData to apiRef
 servers.value = data
@@ -42,8 +45,18 @@ const apiHandler = async () => {
   if (data.value[0].Connections === 0) {
     onlineStatus.value = false
   }
-  console.log(data.value[0].Connections)
+  //calculate statistics
+
+  const serverStatistics = await totalWorkload(servers).then((result) => result)
+
+  //assign statistics to totalOnline and workload
+  totalOnline.value = serverStatistics.sum
+  workload.value = serverStatistics.workload
+  style.value = `width: ${workload.value.toFixed(2)}%`
   lastUpdate.value = getCurrentDate()
+  console.log(totalOnline.value, workload.value, 'totalOnline, workload')
+  console.log('style', style.value)
+
   return data
 }
 
@@ -53,13 +66,36 @@ setInterval(async () => {
 }, Math.floor(Math.random() * (50000 - 10000 + 1) + 10000))
 
 //calculate total server workload
-const totalWorkload = computed(() => {
-  let total = 0
-  servers.value.forEach((server: any) => {
-    total += server.Workload
-  })
-  return total
-})
+const totalWorkload = async (servers: any) => {
+  //calculate total workload
+  console.log('calculating workload')
+  const server = servers.value.value
+
+  //for each server.Connections, add to total
+  const sum = server.reduce(
+    (total: number, server: any) =>
+      total + (server.Connections ? server.Connections : 0),
+    0
+  )
+  //divide amount of server connection by total space of 3600
+  const workload = (sum / 3600) * 100
+  const statistics = {
+    sum,
+    workload,
+  }
+  return statistics
+}
+const serverStatistics = await totalWorkload(servers).then((result) => result)
+
+//assign statistics to totalOnline and workload
+totalOnline.value = serverStatistics.sum
+workload.value = serverStatistics.workload
+style.value = workload.value
+  ? `width: ${workload.value.toFixed(2)}%`
+  : 'width: 33%'
+
+console.log('style', style.value)
+
 //check for dark mode in localstorage
 onMounted(() => {
   if (
@@ -74,17 +110,23 @@ onMounted(() => {
 })
 </script>
 <template>
-  <LayoutMenu :last-update="lastUpdate" :online-status="onlineStatus">
+  <LayoutMenu
+    :last-update="lastUpdate"
+    :total-online="totalOnline"
+    :workload="workload"
+    :online-status="onlineStatus"
+    :style="style"
+  >
     <div
-      class="py-12 md:py-14 mx-auto text-center bg-zinc-200 dark:text-white dark:bg-gray-900"
+      class="py-14 mt-12 md:py-8 md:mt-6 mx-auto text-center bg-slate-200 dark:text-white dark:bg-gray-900"
     >
-      <div class="py-3 mt-5 md:mt-8">
+      <div class="py-8 mt-6 md:mt-6 md:py-12">
         <MessageInfo />
         <HeadingWelcome />
       </div>
 
       <PlayerTable :server-data="servers.value" />
-      
+
       <LayoutFooter />
     </div>
   </LayoutMenu>

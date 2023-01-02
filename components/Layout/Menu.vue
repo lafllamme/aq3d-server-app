@@ -6,6 +6,9 @@ import Popover from '~/components/Message/Popover.vue'
 interface MenuProps {
   onlineStatus: boolean
   lastUpdate: string
+  totalOnline: number
+  workload: number
+  style: string
 }
 
 const props = defineProps<MenuProps>()
@@ -69,7 +72,7 @@ onMounted(() => {
 </script>
 <template>
   <nav
-    class="bg-slate-50 px-2 sm:px-4 py-3.5 dark:bg-slate-800 fixed w-full z-20 top-0 left-0 border-b border-zinc-200 dark:border-gray-600"
+    class="bg-slate-100 px-2 sm:px-4 py-3.5 dark:bg-slate-800 fixed w-full z-20 top-0 left-0 border-b border-zinc-200 dark:border-gray-600"
   >
     <div class="container flex flex-wrap items-center justify-between mx-auto">
       <a href="https://aq3d.com/" class="flex items-center md:px-12">
@@ -201,12 +204,57 @@ onMounted(() => {
       </div>
 
       <div class="md:order-3 w-2/5 mx-auto md:w-1/5 md:m-0">
-        <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
+        <div class="mb-2">
           <div
-            class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
-            style="width: 45%"
+            id="alert-5"
+            class="flex py-1 md:py-2 bg-slate-200 rounded-lg dark:bg-gray-700"
+            role="alert"
           >
-            45%
+            <svg
+              aria-hidden="true"
+              class="flex-shrink-0 w-5 h-5 ml-1 text-gray-700 dark:text-gray-300"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="sr-only">Info</span>
+            <div
+              class="ml-2 md:mt-0.5 text-xs font-medium text-gray-700 dark:text-gray-300"
+            >
+              Currently
+              <a
+                href="#"
+                class="font-semibold underline hover:text-gray-800 dark:hover:text-white"
+                >{{ totalOnline }}</a
+              >
+              Players are online
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="w-full bg-slate-200 rounded-full dark:bg-gray-700">
+            <div
+              id="percentage
+            "
+              class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+              :style="style"
+              data-popover-target="popover-server"
+            >
+              {{ workload.toFixed(2) }}%
+            </div>
+            <Popover
+              id="popover-server"
+              title="Server Workload"
+              description="The workload refers to the capacity of the server
+            regarding the number of players online. The higher the workload, the
+            more players are on the server."
+            />
           </div>
         </div>
       </div>
@@ -215,37 +263,27 @@ onMounted(() => {
         id="navbar-sticky"
       >
         <ul
-          class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+          class="flex flex-col p-2 mt-4 border border-gray-100 rounded-lg bg-slate-200 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:bg-gray-800 md:dark:bg-gray-700 dark:tex dark:border-gray-700"
         >
-          <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
-              aria-current="page"
-              >Home</a
+          <span class="text-black text-xs dark:text-white"> Last Update: </span>
+          <span
+            class="text-gray-800 text-xs font-medium inline-flex items-center rounded dark:text-gray-300"
+          >
+            <svg
+              aria-hidden="true"
+              class="mr-1 w-3 h-3"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
             >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >About</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Services</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-              >Contact</a
-            >
-          </li>
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            {{ lastUpdate }}
+          </span>
         </ul>
       </div>
     </div>
