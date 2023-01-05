@@ -328,7 +328,7 @@ const props = defineProps<PlayerProps>()
             {{ server.Name === 'Localhost' ? 'Test Server' : server.Name }}
           </th>
           <td class="py-4 px-6">
-            <div v-if="server.Connections > 0">
+            <div v-if="server.Connections > 3">
               <svg
                 class="w-5 h-5 text-green-500"
                 aria-hidden="true"

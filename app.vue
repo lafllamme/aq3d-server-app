@@ -89,7 +89,7 @@ const serverStatistics = await totalWorkload(servers).then((result) => result)
 
 //assign statistics to totalOnline and workload
 totalOnline.value = serverStatistics.sum
-workload.value = serverStatistics.workload
+workload.value = serverStatistics.workload ? serverStatistics.workload : 0
 style.value = workload.value
   ? `width: ${workload.value.toFixed(2)}%`
   : 'width: 33%'
