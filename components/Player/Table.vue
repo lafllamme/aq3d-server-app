@@ -328,35 +328,35 @@ const props = defineProps<PlayerProps>()
             {{ server.Name === 'Localhost' ? 'Test Server' : server.Name }}
           </th>
           <td class="py-4 px-6">
-            <div v-if="server.Connections > 3">
-              <svg
-                class="w-5 h-5 text-green-500"
-                aria-hidden="true"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
-            </div>
-            <div v-else>
-              <svg
-                aria-hidden="true"
-                class="w-5 h-5 text-orange-500"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
-                  clip-rule="evenodd"
-                ></path>
-              </svg>
+            <div class="max-w-screen-sm">
+              <div v-if="server.Connections > 3">
+                <span
+                  class="inline-flex items-center bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
+                >
+                  <span class="w-2 h-2 mr-1 bg-green-500 rounded-full"></span>
+                  Available
+                </span>
+              </div>
+              <div v-else>
+                <div v-if="server.Name == 'Localhost'">
+                  <span
+                    class="inline-flex items-center bg-yellow-100 text-yellow-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300"
+                  >
+                    <span
+                      class="w-2 h-2 mr-1 bg-yellow-500 rounded-full"
+                    ></span>
+                    Not Public
+                  </span>
+                </div>
+                <div v-else>
+                  <span
+                    class="inline-flex items-center bg-red-100 text-red-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300"
+                  >
+                    <span class="w-2 h-2 mr-1 bg-red-500 rounded-full"></span>
+                    Unavailable
+                  </span>
+                </div>
+              </div>
             </div>
           </td>
 

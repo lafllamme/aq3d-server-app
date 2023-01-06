@@ -4,7 +4,6 @@
 import Popover from '~/components/Message/Popover.vue'
 
 interface MenuProps {
-  onlineStatus: boolean
   lastUpdate: string
   totalOnline: number
   workload: number
@@ -74,17 +73,18 @@ onMounted(() => {
   <nav
     class="bg-slate-100 px-2 sm:px-4 py-3.5 dark:bg-slate-800 fixed w-full z-20 top-0 left-0 border-b border-zinc-200 dark:border-gray-600"
   >
-    <div class="container flex flex-wrap items-center justify-between mx-auto">
-      <a href="https://aq3d.com/" class="flex items-center md:px-12">
+    <div class="container flex flex-wrap items-center justify-around mx-auto">
+      <a href="https://aq3d.com/" class="flex items-stretch px-1 md:px-12">
         <img
           src="~/assets/images/aq3d.png"
           class="object-cover max-w-full transition-all duration-200 cursor-pointer hover:grayscale h-12 mr-3 md:h-16 sm:h-6"
           alt="A3QD"
         />
 
-        <span class="text-md font-semibold whitespace-nowrap dark:text-white">
+        <!-- span logo title-->
+        <!-- <span class="text-md font-semibold whitespace-nowrap dark:text-white">
           Server App</span
-        >
+        >-->
       </a>
       <div class="flex md:order-2">
         <a
@@ -156,7 +156,7 @@ onMounted(() => {
 
           <svg
             id="theme-toggle-dark-icon"
-            class="w-5 h-5 hidden"
+            class="mr-2 md:m-0 w-5 h-5 hidden"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +167,7 @@ onMounted(() => {
           </svg>
           <svg
             id="theme-toggle-light-icon"
-            class="w-5 h-5 hidden"
+            class="mr-2 md:m-0 w-5 h-5 hidden"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +182,7 @@ onMounted(() => {
         <button
           data-collapse-toggle="navbar-sticky"
           type="button"
-          class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          class="inline-flex items-center mr-5 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="navbar-sticky"
           aria-expanded="false"
         >
@@ -203,7 +203,7 @@ onMounted(() => {
         </button>
       </div>
 
-      <div class="md:order-3 w-2/5 mx-auto md:w-1/5 md:m-0">
+      <div class="md:order-3 w-2/5 ml-1 mx-auto md:w-1/5 md:m-0">
         <div class="mb-2">
           <div
             id="alert-5"
@@ -242,7 +242,7 @@ onMounted(() => {
             <div
               id="percentage
             "
-              class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+              class="text-xs font-medium text-center p-1 leading-none rounded-full text-blue-600 bg-blue-200 dark:text-blue-300 dark:bg-blue-900"
               :style="style"
               data-popover-target="popover-server"
             >
