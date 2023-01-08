@@ -156,7 +156,7 @@ onMounted(() => {
 
           <svg
             id="theme-toggle-dark-icon"
-            class="mr-2 md:m-0 w-5 h-5 hidden"
+            class="md:m-0 w-5 h-5 hidden"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +167,7 @@ onMounted(() => {
           </svg>
           <svg
             id="theme-toggle-light-icon"
-            class="mr-2 md:m-0 w-5 h-5 hidden"
+            class="md:m-0 w-5 h-5 hidden"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -182,7 +182,7 @@ onMounted(() => {
         <button
           data-collapse-toggle="navbar-sticky"
           type="button"
-          class="inline-flex items-center mr-5 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          class="inline-flex items-center mr-5 ml-3 md:ml-0 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="navbar-sticky"
           aria-expanded="false"
         >

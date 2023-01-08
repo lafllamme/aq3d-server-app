@@ -125,6 +125,7 @@ onMounted(() => {
 })
 </script>
 <template>
+  <title>A3QD Status</title>
   <LayoutMenu
     :last-update="lastUpdate"
     :total-online="totalOnline"
