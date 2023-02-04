@@ -1,73 +1,73 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 //import popover component
-import Popover from '~/components/Message/Popover.vue'
+import Popover from "~/components/Message/Popover.vue";
 
 interface MenuProps {
-  lastUpdate: string
-  totalOnline: number
-  workload: number
-  style: string
+  lastUpdate: string;
+  totalOnline: number;
+  workload: number;
+  style: string;
 }
 
-const props = defineProps<MenuProps>()
+const props = defineProps<MenuProps>();
 
 //check for dark and light mode settings
 onMounted(() => {
   var themeToggleDarkIcon: any = document.getElementById(
-    'theme-toggle-dark-icon'
-  )
+    "theme-toggle-dark-icon"
+  );
   var themeToggleLightIcon: any = document.getElementById(
-    'theme-toggle-light-icon'
-  )
+    "theme-toggle-light-icon"
+  );
 
   // Change the icons inside the button based on previous settings
   if (
-    localStorage.getItem('color-theme') === 'dark' ||
-    (!('color-theme' in localStorage) &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches)
+    localStorage.getItem("color-theme") === "dark" ||
+    (!("color-theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
     // document.body.style.backgroundColor = 'red'
 
-    themeToggleLightIcon.classList.remove('hidden')
+    themeToggleLightIcon.classList.remove("hidden");
   } else {
     // document.body.style.backgroundColor = 'green'
 
-    themeToggleDarkIcon.classList.remove('hidden')
+    themeToggleDarkIcon.classList.remove("hidden");
   }
 
-  var themeToggleBtn: any = document.getElementById('theme-toggle')
+  var themeToggleBtn: any = document.getElementById("theme-toggle");
 
-  themeToggleBtn.addEventListener('click', function () {
+  themeToggleBtn.addEventListener("click", function() {
     // toggle icons inside button
-    themeToggleDarkIcon.classList.toggle('hidden')
-    themeToggleLightIcon.classList.toggle('hidden')
+    themeToggleDarkIcon.classList.toggle("hidden");
+    themeToggleLightIcon.classList.toggle("hidden");
 
     // if set via local storage previously
-    if (localStorage.getItem('color-theme')) {
-      if (localStorage.getItem('color-theme') === 'light') {
-        document.documentElement.classList.add('dark')
+    if (localStorage.getItem("color-theme")) {
+      if (localStorage.getItem("color-theme") === "light") {
+        document.documentElement.classList.add("dark");
         // document.body.style.backgroundColor = 'red'
 
-        localStorage.setItem('color-theme', 'dark')
+        localStorage.setItem("color-theme", "dark");
       } else {
-        document.documentElement.classList.remove('dark')
+        document.documentElement.classList.remove("dark");
         // document.body.style.backgroundColor = 'green'
-        localStorage.setItem('color-theme', 'light')
+        localStorage.setItem("color-theme", "light");
       }
 
       // if NOT set via local storage previously
     } else {
-      if (document.documentElement.classList.contains('dark')) {
-        document.documentElement.classList.remove('dark')
-        localStorage.setItem('color-theme', 'light')
+      if (document.documentElement.classList.contains("dark")) {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("color-theme", "light");
       } else {
-        document.documentElement.classList.add('dark')
-        localStorage.setItem('color-theme', 'dark')
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("color-theme", "dark");
       }
     }
-  })
-})
+  });
+});
 </script>
 <template>
   <nav
@@ -231,7 +231,7 @@ onMounted(() => {
               <a
                 href="#"
                 class="font-semibold underline hover:text-gray-800 dark:hover:text-white"
-                >{{ totalOnline }}</a
+              >{{ totalOnline }}</a
               >
               Players are online
             </div>

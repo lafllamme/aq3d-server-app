@@ -11,7 +11,7 @@ export default defineEventHandler((event) => {
     second: 'numeric',
   }
 
-  const current = now.toLocaleDateString('de-DE', options)
+  const current = now.toLocaleDateString('de-DE', options as any)
 
   console.log('New request: ' + event.node.req.url + ' at ' + current)
 })
