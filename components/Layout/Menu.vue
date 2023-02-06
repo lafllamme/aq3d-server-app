@@ -7,7 +7,7 @@ interface MenuProps {
   lastUpdate: string;
   totalOnline: number;
   workload: number;
-  style: string;
+  style: string | Object;
 }
 
 const props = defineProps<MenuProps>();
