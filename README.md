@@ -1,10 +1,23 @@
-# Nuxt 3 Minimal Starter
+<p align="center">
+  <img src="https://nuxt.com/assets/design-kit/icon-green.svg" width="120" alt="Nuxt 3 logo"/>
+</p>
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+<h1 align="center">✨ Nuxt 3 Minimal Starter ✨</h1>
 
-## Setup
+<p align="center">
+  A minimal Nuxt 3 starter project to kickstart your development journey with the latest Nuxt framework!
+</p>
 
-Make sure to install the dependencies:
+<p align="center">
+  <a href="https://github.com/lafllamme/aq3d-server-app/commits/main"><img src="https://img.shields.io/github/last-commit/lafllamme/aq3d-server-app" alt="Last Commit"></a>
+  <a href="https://github.com/lafllamme/aq3d-server-app/issues"><img src="https://img.shields.io/github/issues/lafllamme/aq3d-server-app" alt="Open Issues"></a>
+  <a href="https://github.com/lafllamme/aq3d-server-app/pulls"><img src="https://img.shields.io/github/issues-pr/lafllamme/aq3d-server-app" alt="Open Pull Requests"></a>
+  <a href="https://github.com/lafllamme/aq3d-server-app"><img src="https://img.shields.io/github/license/lafllamme/aq3d-server-app" alt="License"></a>
+</p>
+
+## 🛠 Setup
+
+Before starting, install the dependencies with your preferred package manager:
 
 ```bash
 # yarn
@@ -17,27 +30,46 @@ npm install
 pnpm install --shamefully-hoist
 ```
 
-## Development Server
+## 🚀 Development Server
 
-Start the development server on http://localhost:3000
+Launch the development server at [http://localhost:3000](http://localhost:3000):
 
 ```bash
 npm run dev
 ```
 
-## Production
+## 📦 Production
 
-Build the application for production:
+To build and preview your application for production:
 
-```bash
-npm run build
-```
+1. **Build the Application**:
 
-Locally preview production build:
+    ```bash
+    npm run build
+    ```
 
-```bash
-npm run preview
-```
+2. **Preview Production Build**:
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
-# aq3d-server-app
+    ```bash
+    npm run preview
+    ```
+
+For deployment instructions, check the official [Nuxt 3 deployment documentation](https://nuxt.com/docs/getting-started/deployment).
+
+## 📚 Learn More
+
+- **[Nuxt 3 Documentation](https://nuxt.com/docs/getting-started/introduction)** - Dive deep into Nuxt 3 features and configurations.
+- **[Vue 3 Documentation](https://v3.vuejs.org/)** - Learn about Vue’s composition API and reactive programming.
+- **[Vite Documentation](https://vitejs.dev/)** - Explore Vite's fast, no-bundle dev server.
+
+## 🤝 Contributing
+
+Contributions are welcome! If you’d like to help improve this project, feel free to open an issue or submit a pull request. Don’t forget to follow the [Code of Conduct](https://github.com/lafllamme/aq3d-server-app/blob/main/CODE_OF_CONDUCT.md).
+
+## 📄 License
+
+This project is open-source and licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+---
+
+<p align="center">Made with ❤️ by <a href="https://github.com/lafllamme">lafllamme</a></p>
